@@ -3,6 +3,7 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
+import { element } from 'prop-types';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard')));
@@ -14,6 +15,12 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 // const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 // const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
+
+// members routing 
+const DoctorList = Loadable(lazy(() => import('views/members/worker/DoctorList')));
+const NurseList = Loadable(lazy(() => import('views/members/worker/NurseList')));
+const PatientsList = Loadable(lazy(() => import('views/members/PatientsList')));
+
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
@@ -47,50 +54,39 @@ const MainRoutes = {
       ]
     },
     {
+      path : 'users',
+      children : [
+        {
+          path : 'users-doctor',
+          element : <DoctorList/>
+        },
+        {
+          path : 'users-nurse',
+          element : <NurseList/>
+        },
+        {
+          path : 'users-patien',
+          element : <PatientsList/>
+        }
+      ]
+    },
+    {
       path: 'utils',
       children: [
         {
           path: 'util-typography',
           element: <UtilsTypography />
-        }
-      ]
-    },
-    {
-      path: 'utils',
-      children: [
+        },
         {
           path: 'util-color',
           element: <UtilsColor />
-        }
-      ]
-    },
-    {
-      path: 'utils',
-      children: [
+        },
         {
           path: 'util-shadow',
           element: <UtilsShadow />
         }
       ]
     },
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'tabler-icons',
-    //       element: <UtilsTablerIcons />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'material-icons',
-    //       element: <UtilsMaterialIcons />
-    //     }
-    //   ]
-    // },
     {
       path: 'sample-page',
       element: <SamplePage />

@@ -7,11 +7,11 @@ const icons = { IconBrandChrome, IconHelp };
 // ==============================|| SAMPLE PAGE & DOCUMENTATION MENU ITEMS ||============================== //
 
 const other = {
-  id: 'sample-docs-roadmap',
+  id: 'sample-docs-roadma',
   type: 'group',
   children: [
     {
-      id: 'sample-page',
+      id: 'sample-pag',
       title: 'Sample Page',
       type: 'item',
       url: '/sample-page',

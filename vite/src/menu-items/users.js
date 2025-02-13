@@ -11,37 +11,38 @@ const icons = {
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
-const utilities = {
-  id: 'utilities',
-  title: 'Utilities',
+const users = {
+  id: 'users',
+  title: 'Members',
+  caption: 'users',
   type: 'group',
   children: [
     {
-      id: 'util-typograph',
-      title: 'Typography',
-      type: 'item',
-      url: '/utils/util-typography',
+      id: 'users-workrs',
+      title: 'Workers',
+      type: 'collapse',
       icon: icons.IconTypography,
-      breadcrumbs: false
+      
+      children : [
+        {
+          id: 'users-doctor',
+          title: 'Doctor',
+          type: 'item',
+          url: '/users/users-doctor',
+          breadcrumbs: true
+      
+        },
+        {
+          id: 'users-nurse',
+          title: 'Nurse',
+          type: 'item',
+          url: '/users/users-nurse',
+          breadcrumbs: false
+        }
+      ]
     },
     {
-      id: 'util-typograp',
-      title: 'Typography',
-      type: 'item',
-      url: '/utils/util-typography',
-      icon: icons.IconTypography,
-      breadcrumbs: false
-    },
-    {
-      id: 'util-typography',
-      title: 'Typography',
-      type: 'item',
-      url: '/utils/util-typography',
-      icon: icons.IconTypography,
-      breadcrumbs: false
-    },
-    {
-      id: 'util-color',
+      id: 'users-color',
       title: 'Color',
       type: 'item',
       url: '/utils/util-color',
@@ -49,7 +50,7 @@ const utilities = {
       breadcrumbs: false
     },
     {
-      id: 'util-shadow',
+      id: 'users-shadow',
       title: 'Shadow',
       type: 'item',
       url: '/utils/util-shadow',
@@ -59,4 +60,4 @@ const utilities = {
   ]
 };
 
-export default utilities;
+export default users;
