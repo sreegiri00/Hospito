@@ -10,20 +10,32 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye ,faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchSection from "layout/MainLayout/Header/SearchSection";
 
 export default function DoctorList() {
+  const [doctors, setDoctors] = useState([]);
   const [doctor, setDoctor] = useState([]);
+  const [searchData, setSearchData] = useState();
+  const [data,setData] = useState()
+  const [port, setPort] = useState(import.meta.env.VITE_PORT_NO ? import.meta.env.VITE_PORT_NO : 3001)
   useEffect(() => {
-    axios.get("http://localhost:3002/doctore/")
+    axios.get(`http://localhost:${port}/doctore/`)
       .then((res) => {
         console.log(res.data);
+        setDoctors(res.data);
         setDoctor(res.data);
       })
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
 
+  useEffect(() => {
+    console.log("search",searchData);
+    
+    const filtered = doctors?.filter((product) => product.name.toLowerCase().includes(searchData));
+    setDoctor(filtered);
+
+  }, [searchData]);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -48,9 +60,9 @@ export default function DoctorList() {
 
   return (
     <>
-      <div className="box" >
-        {/* <SearchSection/> */}
-        <Button variant="outlined">ADD</Button>
+      <div className="box" style={{ marginBottom: '10px', display: "flex", alignContent: "center", justifyContent: "right", marginRight: "20px" }}>
+        <SearchSection setSearchData={setSearchData} />
+        <Button variant="outlined" style={{ marginLeft: '10px' }}>ADD</Button>
       </div>
       <div className="box">
 

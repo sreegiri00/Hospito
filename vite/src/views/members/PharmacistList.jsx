@@ -14,12 +14,14 @@ import { faEye ,faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons"
 import SearchSection from "layout/MainLayout/Header/SearchSection";
 
 export default function PharmacistList() {
-  const [doctor, setDoctor] = useState([]);
+  const [drag, setDrag] = useState([]);
+  const [searchData, setSearchData] = useState();
+      const [port, setPort] = useState(import.meta.env.VITE_PORT_NO ? import.meta.env.VITE_PORT_NO : 3001)
   useEffect(() => {
-    axios.get("http://localhost:3002/pharmacy/")
+    axios.get(`http://localhost:${port}/pharmacy/`)
       .then((res) => {
         console.log(res.data);
-        setDoctor(res.data);
+        setDrag(res.data);
       })
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
@@ -48,17 +50,17 @@ export default function PharmacistList() {
 
   return (
     <>
-      <div className="box" >
-        {/* <SearchSection/> */}
-        <Button variant="outlined">ADD</Button>
-      </div>
+      <div className="box" style={{ marginBottom: '10px', display: "flex", alignContent: "center", justifyContent: "right", marginRight: "20px" }}>
+              <SearchSection setSearchData={setSearchData} />
+              <Button variant="outlined" style={{ marginLeft: '10px' }}>ADD</Button>
+            </div>
       <div className="box">
 
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">Doctor Name</StyledTableCell>
+                <StyledTableCell align="center">drog Name</StyledTableCell>
                 <StyledTableCell align="right">Department</StyledTableCell>
                 <StyledTableCell align="right">Time&nbsp;(Start-End)</StyledTableCell>
                 <StyledTableCell align="right">Blood</StyledTableCell>
@@ -68,7 +70,7 @@ export default function PharmacistList() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {doctor.map((row) => (
+              {drag.map((row) => (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell component="th" scope="row">{row.name}</StyledTableCell>
                   <StyledTableCell align="right">{row.department}</StyledTableCell>

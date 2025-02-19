@@ -10,16 +10,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye ,faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchSection from "layout/MainLayout/Header/SearchSection";
 
 export default function PatientsList() {
-  const [doctor, setDoctor] = useState([]);
+  const [patient, setPatient] = useState([]);
+  const [searchData, setSearchData] = useState();
+  const [port, setPort] = useState(import.meta.env.VITE_PORT_NO ? import.meta.env.VITE_PORT_NO : 3001)
   useEffect(() => {
-    axios.get("http://localhost:3002/patient/")
+    axios.get(`http://localhost:${port}/patient/`)
       .then((res) => {
         console.log(res.data);
-        setDoctor(res.data);
+        setPatient(res.data);
       })
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
@@ -48,17 +50,17 @@ export default function PatientsList() {
 
   return (
     <>
-      <div className="box" >
-        {/* <SearchSection/> */}
-        <Button variant="outlined">ADD</Button>
-      </div>
+      <div className="box" style={{ marginBottom: '10px', display: "flex", alignContent: "center", justifyContent: "right", marginRight: "20px" }}>
+              <SearchSection setSearchData={setSearchData} />
+              <Button variant="outlined" style={{ marginLeft: '10px' }}>ADD</Button>
+            </div>
       <div className="box">
 
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">Doctor Name</StyledTableCell>
+                <StyledTableCell align="center">patient Name</StyledTableCell>
                 <StyledTableCell align="right">Department</StyledTableCell>
                 <StyledTableCell align="right">Time&nbsp;(Start-End)</StyledTableCell>
                 <StyledTableCell align="right">Blood</StyledTableCell>
@@ -68,7 +70,7 @@ export default function PatientsList() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {doctor.map((row) => (
+              {patient.map((row) => (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell component="th" scope="row">{row.name}</StyledTableCell>
                   <StyledTableCell align="right">{row.department}</StyledTableCell>
