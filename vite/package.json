@@ -1,13 +1,7 @@
 {
-  "name": "berry-free-material-react",
+  "name": "vite",
   "version": "3.5.0",
   "private": true,
-  "author": {
-    "name": "CodedThemes",
-    "email": "CodedThemes@gmail.com",
-    "url": "https://codedthemes.com/"
-  },
-  "homepage": "https://berrydashboard.io/free",
   "scripts": {
     "start": "env-cmd -f .env vite",
     "build": "vite build",
@@ -23,6 +17,11 @@
     "@fontsource/inter": "^5.0.16",
     "@fontsource/poppins": "^5.0.8",
     "@fontsource/roboto": "^5.0.8",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^5.15.10",
     "@mui/lab": "^5.0.0-alpha.165",
     "@mui/material": "^5.16.14",
@@ -34,6 +33,7 @@
     "@tailwindcss/vite": "^4.0.3",
     "@vitejs/plugin-react": "^4.2.1",
     "apexcharts": "^3.46.2",
+    "axios": "^1.7.9",
     "env-cmd": "^10.1.0",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.6",

@@ -3,11 +3,10 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
-import { element } from 'prop-types';
+
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard')));
-const AddToCart = Loadable(lazy(() => import('views/newCreate/addToCart/addToCart')));
 
 // utilities routing
 const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
@@ -20,6 +19,7 @@ const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const DoctorList = Loadable(lazy(() => import('views/members/worker/DoctorList')));
 const NurseList = Loadable(lazy(() => import('views/members/worker/NurseList')));
 const PatientsList = Loadable(lazy(() => import('views/members/PatientsList')));
+const PharmacistList = Loadable(lazy(() => import('views/members/PharmacistList')));
 
 
 // sample page routing
@@ -45,15 +45,6 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'dashboard',
-      children: [
-        {
-          path: 'addtocart',
-          element: <AddToCart />
-        }
-      ]
-    },
-    {
       path : 'users',
       children : [
         {
@@ -65,8 +56,12 @@ const MainRoutes = {
           element : <NurseList/>
         },
         {
-          path : 'users-patien',
+          path : 'users-patients',
           element : <PatientsList/>
+        },
+        {
+          path : 'users-pharmacist',
+          element : <PharmacistList/>
         }
       ]
     },

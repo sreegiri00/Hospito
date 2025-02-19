@@ -18,15 +18,7 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/default',
       icon: icons.IconDashboard,
-      breadcrumbs: false
-    },
-    {
-      id: '',
-      title: 'Add To Cart',
-      type: 'item',
-      url: '/dashboard/addtocart',
-      icon: icons.IconShoppingCart,
-      breadcrumbs: false
+      breadcrumbs: true
     }
   ]
 };

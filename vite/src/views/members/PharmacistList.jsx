@@ -13,10 +13,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye ,faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 import SearchSection from "layout/MainLayout/Header/SearchSection";
 
-export default function NurseList() {
+export default function PharmacistList() {
   const [doctor, setDoctor] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3002/nurse/")
+    axios.get("http://localhost:3002/pharmacy/")
       .then((res) => {
         console.log(res.data);
         setDoctor(res.data);

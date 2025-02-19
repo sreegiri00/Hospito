@@ -29,7 +29,7 @@ const users = {
           title: 'Doctor',
           type: 'item',
           url: '/users/users-doctor',
-          breadcrumbs: true
+          breadcrumbs: false
       
         },
         {
@@ -42,21 +42,21 @@ const users = {
       ]
     },
     {
-      id: 'users-color',
-      title: 'Color',
+      id: 'users-patient',
+      title: 'Patients',
       type: 'item',
-      url: '/utils/util-color',
+      url: '/users/users-patients',
       icon: icons.IconPalette,
       breadcrumbs: false
     },
     {
-      id: 'users-shadow',
-      title: 'Shadow',
+      id: 'users-pharmacistList',
+      title: 'Pharmacist',
       type: 'item',
-      url: '/utils/util-shadow',
-      icon: icons.IconShadow,
+      url: '/users/users-pharmacist',
+      icon: icons.IconPalette,
       breadcrumbs: false
-    }
+    },
   ]
 };
 
